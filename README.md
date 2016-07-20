@@ -11,6 +11,17 @@
  - `php`： 存储定制 php image 的 `Dockerfile`，以及`conf/php.conf`；
 
   官方的 php 是不带 mysql 插件的，因此需要使用 Dockerfile 进行定制。
+  
+#构建
+
+docker build
+
+#目录说明
+site/51tywy:为代码存放的目录--从宿主机挂载上容器
+site/mysqldata:为数据库存放的目录--从宿主机挂载上容器
+nginx mysql redis php分别为dockerfile存放的目录
+
+mysql默认密码是51TYwy2016720
 
 ## 启动
 
