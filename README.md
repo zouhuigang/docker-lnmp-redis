@@ -37,6 +37,9 @@ docker-compose up -d
 curl http://localhost
 ```
 
+测试是否安装成功,访问http://url/index_test.php
+测试redis是否成功，访问http://url/index_redis.php
+
 ## 停止服务
 
 ```
