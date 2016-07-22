@@ -14,7 +14,8 @@
   
 #构建
 
-docker build
+docker-compose build
+
 
 #目录说明
 site/51tywy:为代码存放的目录--从宿主机挂载上容器
@@ -47,3 +48,4 @@ docker-compose stop
 ```
 
 ## 新增自定义https说明文档 ##
+docker-compose.yml：挂载证书目录到nginx中
