@@ -25,7 +25,7 @@ services:
             - mysql
             - redis
     mysql:
-        image: mysql:latest
+        image: registry.aliyuncs.com/zhg_docker_ali_r/mysql
         volumes:
             - ./mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
             - ./site/mysqldata:/var/lib/mysql

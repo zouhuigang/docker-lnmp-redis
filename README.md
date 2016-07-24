@@ -1,3 +1,122 @@
+##环境配置##
+
+sudo yum update
+
+
+安装docker链接：
+https://docs.docker.com/engine/installation/linux/centos/
+
+##安装python3.5以上版本：
+
+查看python版本
+
+python --version
+
+
+1、CentOS6.5/7 安装Python 的依赖包
+
+yum groupinstall "Development tools"
+
+yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
+
+2、下载Python3.6的源码包并编译
+
+wget http://mirrors.sohu.com/python/3.6.0/Python-3.6.0a2.tgz
+
+tar xf Python-3.6.0a2.tgz
+
+cd Python-3.6.0a2
+
+./configure --prefix=/usr/local --enable-shared
+
+make
+
+make install
+
+进入/usr/local/bin里面，输入命令，如果/usr/bin目录有python连接，则删除：
+
+ln –s /usr/local/bin/python3 /usr/bin/python
+
+3、在运行Python之前需要配置库：
+
+echo /usr/local/lib >> /etc/ld.so.conf.d/local.conf
+
+ldconfig
+
+4、运行演示：
+
+python3 --version
+
+Python 3.6.0a2
+
+
+
+##yum命令会受影响
+[root@nginx ~]# vi /usr/bin/yum    #将!/usr/bin/python改成!/usr/bin/python2即可。
+
+File "/usr/libexec/urlgrabber-ext-down"-------------报错
+
+vi /usr/libexec/urlgrabber-ext-down
+
+把头部的!#-----python改成和/usr/bin/yum中一样的
+
+
+
+
+##安装pip
+
+从pip官网 https://pypi.python.org/pypi/pip 下载pip的源代码
+
+解压
+tar -zxvf pip-8.1.2.tar.gz
+
+cd pip-8.1.2
+
+安装
+
+python setup.py install
+
+
+这个时候会报错说少了setuptools
+
+从setuptools官网 https://pypi.python.org/pypi/setuptools下载setuptools原来
+
+解压
+
+tar -zxvf setuptools-24.0.3.tar.gz
+
+cd setuptools-24.0.3
+
+安装
+
+python setup.py install
+
+
+再次安装pip就OK了。
+
+
+
+##安装docker-compose
+参考资料：https://docs.docker.com/compose/install/
+
+pip install docker-compose
+
+
+##使用docker-compose构建docker-lnmp-redis-workerman
+cd /mnt && mkdir gitcoding && cd gitcoding
+
+git clone https://git.coding.net/zouhuigang/docker-lnmp-redis.git
+
+cd docker-lnmp-redis && docker-compose build
+
+docker-compose up -d
+
+此时我们用docker ps -a可以看到启动了4个容器，发现一个mysql启动后退出了，检查问题发现site/mysqldata的文件拥有者是system。更改拥有者为root后，再次启动就正常了。注意mysqldata里面的文件拥有者也得更改为root
+
+
+
+
+
 # LNMP Docker 配置文件
 
 启动3个Docker：`php`, `mysql`, `nginx`。`nginx`连接 `php`，`php` 连接 `mysql`。
