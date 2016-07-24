@@ -22,7 +22,7 @@ site/51tywy:为代码存放的目录--从宿主机挂载上容器
 site/mysqldata:为数据库存放的目录--从宿主机挂载上容器
 nginx mysql redis php分别为dockerfile存放的目录
 
-mysql默认密码是51TYwy2016720
+mysql默认密码是51TYwy2016720,更改为：TYwy2016720
 
 ## 启动
 
