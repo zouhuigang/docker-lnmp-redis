@@ -26,6 +26,8 @@ services:
             - redis
     mysql:
         image: registry.aliyuncs.com/zhg_docker_ali_r/mysql
+        ports:
+            - "3306:3306"
         volumes:
             - ./mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
             - ./site/mysqldata:/var/lib/mysql
@@ -45,6 +47,16 @@ services:
         networks:
            - backend
         tty: true
+    oneapm:
+        build: ./oneapm/.
+        volumes:
+            -  /var/run/docker.sock:/var/run/docker.sock
+            - /proc/:/host/proc/:ro
+            - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro 
+        networks:
+            - backend
+        environment:
+            LICENSE_KEY: VAQLBVBUBAIb193HHloTCV8aWxfe71ddVR9UVQYHH124fAIHS1YCGgdTe365AA8eVlYaAQY=
 
 networks:
     frontend:

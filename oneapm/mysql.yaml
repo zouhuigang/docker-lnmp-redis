@@ -1,0 +1,12 @@
+init_config:
+
+instances:
+  - server: mysql
+    user: root
+    pass: TYwy2016720
+    tags:
+        - "tag_key1:tag_value1"
+        - "tag_key2:tag_value2"
+    options:
+        replication: 0
+galera_cluster: 1
