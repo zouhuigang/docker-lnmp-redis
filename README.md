@@ -168,3 +168,11 @@ docker-compose stop
 
 ## 新增自定义https说明文档 ##
 docker-compose.yml：挂载证书目录到nginx中
+
+##问题
+Q:Data too long for column 'in_catestr' at row 1
+
+A:找到docker-lnmp-redis\mysql下的文件mysql.cnf，
+    sql_mode = NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+
+  去掉STRICT_TRANS_TABLES，目前已去掉了，如需要，则根据自己需要添加
