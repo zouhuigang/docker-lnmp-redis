@@ -32,7 +32,7 @@ services:
             - ./mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
             - ./site/mysqldata:/var/lib/mysql
         environment:
-            MYSQL_ROOT_PASSWORD: TYwy2016720
+            MYSQL_ROOT_PASSWORD: 123456
         networks:
             - backend
     redis:
@@ -57,7 +57,6 @@ services:
             - backend
         environment:
             LICENSE_KEY: VAQLBVBUBAIb193HHloTCV8aWxfe71ddVR9UVQYHH124fAIHS1YCGgdTe365AA8eVlYaAQY=
-
 networks:
     frontend:
     backend:
