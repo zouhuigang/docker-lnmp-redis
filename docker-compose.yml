@@ -3,8 +3,8 @@ services:
     nginx:
         image: nginx:latest
         ports:
-            - "80:80"
-            - "443:443"
+            - "30001:80"
+            - "30002:443"
         volumes:
             - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
             - ./nginx/ssl:/etc/nginx/ssl:ro
@@ -32,7 +32,7 @@ services:
             - ./mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
             - ./site/mysqldata:/var/lib/mysql
         environment:
-            MYSQL_ROOT_PASSWORD: 123456
+            MYSQL_ROOT_PASSWORD: TYwy2016720
         networks:
             - backend
     redis:
@@ -42,8 +42,8 @@ services:
     workerman:
         build: ./workerman/.
         ports:
-           - "8383:8383"
-           - "3232:3232"
+           - "30083:8383"
+           - "30032:3232"
         networks:
            - backend
         tty: true
